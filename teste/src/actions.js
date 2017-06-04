@@ -1,4 +1,15 @@
 export const SET_GAMES = 'SET_GAMES';
+const SERVER = 'http://localhost:8000/api';
+
+function handleResponse(response){
+    if(response.ok){
+        return response.json();
+    }else{
+        let error = new Error(response.statusText);
+        error.response = response;
+        throw error;
+    }
+}
 
 export function setGames(games){
     return {
@@ -7,10 +18,22 @@ export function setGames(games){
     }
 }
 
-export function fetchGames(){
-    //const server = 'http://localhost:8000';
+export function saveGame(data){
+    console.log(data);
     return dispatch => {
-        fetch('/api/games')
+        return fetch(SERVER + '/games', {
+            method: 'post',
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(handleResponse);
+    }
+}
+
+export function fetchGames(){
+    return dispatch => {
+        fetch(SERVER + 'games')
             .then(function(response){
                 return response.json()
             })

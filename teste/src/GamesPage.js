@@ -12,7 +12,7 @@ class GamesPage extends Component {
     render() {
         return (
             <div>
-                <h1>Games List</h1>
+                <h1>Lista de Jogos</h1>
 
                 <GamesList games={this.props.games}/>
             </div>

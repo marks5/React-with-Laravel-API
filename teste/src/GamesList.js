@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 export default function GamesList ({ games }) {
     const emptyMessage = (
-        <p>There are no games yet in your collection.</p>
+        <p>Você não tem nenhum jogo na sua coleção!</p>
     );
     
     const gamesList = (
-        <p>Games List</p>
+        <p>Lista de Jogos</p>
     );
 
     return (
