@@ -1,7 +1,9 @@
 # React-with-Laravel-API
 
 React 15.5.4
+
 React Redux
+
 React Router DOM
 
 Fetch -> GET/POST
