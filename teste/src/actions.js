@@ -1,5 +1,7 @@
 export const SET_GAMES = 'SET_GAMES';
 export const ADD_GAME = 'ADD_GAME';
+export const GAME_FETCHED = 'GAME_FETCHED';
+
 const SERVER = 'http://localhost:8000/api';
 
 function handleResponse(response){
@@ -26,6 +28,13 @@ export function addGame(game){
     }
 }
 
+export function gameFetched(game){
+    return {
+        type: GAME_FETCHED,
+        game
+    }
+}
+
 export function saveGame(data){
     console.log(data);
     return dispatch => {
@@ -47,8 +56,19 @@ export function fetchGames(){
                 return response.json()
             })
             .then(function(json){
-                console.log(json)
                 return dispatch(setGames(json))
+            });
+    }
+}
+
+export function fetchGame(id){
+    return dispatch => {
+        fetch(SERVER + `/games/${id}`)
+            .then(function(response){
+                return response.json()
+            })
+            .then(function(json){
+                return dispatch(gameFetched(json))
             });
     }
 }
